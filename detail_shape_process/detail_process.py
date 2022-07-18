@@ -106,7 +106,7 @@ class DetailProcessor:
 
             base_name = os.path.splitext(img_name)[0]
             if not os.path.exists(f'{self.opt.output}/{base_name}'):
-                os.mkdir(f'{self.opt.output}/{base_name}')
+                os.makedirs(f'{self.opt.output}/{base_name}')
             img = cv2.imread(f'{self.opt.input}/{img_name}')
             lm_pos = self.detect_landmark(img)
             if lm_pos is None:

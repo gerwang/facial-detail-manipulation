@@ -7,7 +7,7 @@ opencv-python
 lmdb
 numpy
 GPUtil
-Pillow
+pillow
 scikit-learn==0.23.2
 visdom
 ninja
