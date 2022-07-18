@@ -17,14 +17,18 @@ Code for our ECCV 2022 paper "Structure-aware Editable Morphable Model for 3D Fa
 ## Getting started
 
 - Clone this repository and `cd facial-detail-manipulation`
-- Run `conda env create -f environment.yml`
-- 
+- Run `conda create -n semm python=3.7 && conda activate semm`
+- Run `pip install -r requirements.txt`
+- Install `pytorch==1.9.0 torchvision==0.10.0` from [PyTorch](https://pytorch.org/get-started/previous-versions/#v190).
+- Install `pytorch3d==0.6.2` from [PyTorch3D](https://github.com/facebookresearch/pytorch3d/blob/main/INSTALL.md). The author uses `pip install "git+https://github.com/facebookresearch/pytorch3d.git@v0.6.2"`.
+- Install [ibug-face-detection](https://github.com/hhj1897/face_detection) and [ibug-face-alignment](https://github.com/hhj1897/face_alignment).
 
 - Download pretrained model from [here](https://drive.google.com/file/d/16g8zcvQXts9SuU5tgstHpWMgQ49vBmeY/view?usp=sharing), unzip and put `SEMM` into `./checkpoints`.
 - Download `model_mse.pth` from [here](https://drive.google.com/file/d/1lc3GsP8XfIMDJfvamMmou2sOTG0ID02p/view?usp=sharing) and put it into `./checkpoints`.
 - Download `facescape_bilinear_model_v1_3.zip` from https://facescape.nju.edu.cn/Page_Download/  and put `core_847_50_52.npy` into `./predef`.
 - Download `dpmap_single_net_G.pth` from [here](https://drive.google.com/file/d/18j8bnj5IHP0u2jNuIrWh7dvQkfagBxsM/view?usp=sharing) and put it into `./checkpoints`.
-- Install **Blender 3.0.1** and **FFmpeg**. Make sure `blender` and `ffmpeg` can be accessed in shell, or you can set the `blender_path` and `ffmpeg_path` in `./experiments/both_cond_launcher.py`.
+- Install **Blender 3.2** and **FFmpeg**. Make sure `blender` and `ffmpeg` can be accessed in shell, or you can set the `blender_path` and `ffmpeg_path` in `./experiments/both_cond_launcher.py`.
+- Install `scipy` for Blender. Typically, we should first download the [get-pip](https://github.com/pypa/get-pip) script, run `${blender_path}/3.2/python/bin/python3.10 get-pip.py` and then run `${blender_path}/3.2/python/bin/python3.10 -m pip install scipy`.
 
 ## Usage
 
@@ -52,14 +56,6 @@ python -m experiments both_cond exp_inter SEMM --gpu_id 0
 
 The results will be in `./demo/output/${filename}/exp_inter_${target_exp_name}/`. You can set which data to process and the target expression via `file_paths` and `target_exps` in `exp_inter_options` in the file `./experiments/both_cond_launcher.py`.
 
-### Blendshape animation
-
-```shell
-python -m experiments both_cond bs_anime SEMM --gpu_id 0
-```
-
-The results will be in `./demo/output/${filename}/bs_anime_${clip_name}/`.
-
 ### Age progression animation
 
 ```shell
@@ -68,6 +64,14 @@ python -m experiments both_cond age_progression SEMM --gpu_id 0
 
 The results will be in `./demo/output/${filename}/age_progression/`.
 
+### Blendshape animation
+
+```shell
+python -m experiments both_cond bs_anime SEMM --gpu_id 0
+```
+
+The results will be in `./demo/output/${filename}/bs_anime_${clip_name}/`.
+
 ### Interactive wrinkle line editing
 
 ```shell
@@ -75,6 +79,17 @@ python -m experiments both_cond demo SEMM --gpu_id 0
 ```
 
 An GUI window will pop up. You can import a displacement map and edit it by drawing or erasing lines.
+
+<details>
+    <summary>Common issues</summary>
+    <p>
+    If you encounter the problem `qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "${conda_path}/envs/semm/lib/python3.7/site-packages/cv2/qt/plugins" even though it was found`, that's a conflict between `opencv-python` and `pyqt5`. Consider using
+```shell
+    conda install -c anaconda py-opencv
+    conda install -c alges pyqt 
+```
+</p></details>
+
 
 ## Acknowledgements
 
