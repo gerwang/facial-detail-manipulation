@@ -2,19 +2,24 @@
 
 Code for our ECCV 2022 paper "Structure-aware Editable Morphable Model for 3D Facial Detail Animation and Manipulation".
 
+##### Expression editing
+
 ![](./imgs/exp_inter.gif)
 
+##### Age editing
+
 ![](./imgs/age_progression.gif)
+
+##### Wrinkle line editing
 
 ![](./imgs/wrinkle_line_edit.gif)
 
 ## Getting started
 
-- Download `model_mse.pth` from here and put it into `./checkpoints`.
-- Download pretrained model from here, unzip and put `SEMM` into `./checkpoints`.
+- Download pretrained model from [here](https://drive.google.com/file/d/16g8zcvQXts9SuU5tgstHpWMgQ49vBmeY/view?usp=sharing), unzip and put `SEMM` into `./checkpoints`.
+- Download `model_mse.pth` from [here](https://drive.google.com/file/d/1lc3GsP8XfIMDJfvamMmou2sOTG0ID02p/view?usp=sharing) and put it into `./checkpoints`.
 - Download `facescape_bilinear_model_v1_3.zip` from https://facescape.nju.edu.cn/Page_Download/  and put `core_847_50_52.npy` into `./predef`.
 - Download `dpmap_single_net_G.pth` from [here](https://drive.google.com/file/d/18j8bnj5IHP0u2jNuIrWh7dvQkfagBxsM/view?usp=sharing) and put it into `./checkpoints`.
-
 - Install **Blender 3.0.1** and **FFmpeg**. Make sure `blender` and `ffmpeg` can be accessed in shell, or you can set the `blender_path` and `ffmpeg_path` in `./experiments/both_cond_launcher.py`.
 
 ## Usage
