@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import trimesh
 
 
 def color_transfer(target):
@@ -71,51 +70,6 @@ def tensor2im(image_tensor, size=None, imtype=np.uint16, normalize=True):
     if len(image_numpy.shape) == 3:
         image_numpy = image_numpy[:, :, 0]
     return image_numpy.astype(imtype)
-
-
-def subdiv(verts, tris, texcoords=None, face_index=None):
-    if face_index is None:
-        face_index = np.arange(len(tris))
-    else:
-        face_index = np.asanyarray(face_index)
-
-    # the (c, 3) int array of vertex indices
-    tris_subset = tris[face_index]
-
-    # find the unique edges of our faces subset
-    edges = np.sort(trimesh.remesh.faces_to_edges(tris_subset), axis=1)
-    unique, inverse = trimesh.remesh.grouping.unique_rows(edges)
-    # then only produce one midpoint per unique edge
-    mid = verts[edges[unique]].mean(axis=1)
-    mid_idx = inverse.reshape((-1, 3)) + len(verts)
-
-    # the new faces_subset with correct winding
-    f = np.column_stack([tris_subset[:, 0],
-                         mid_idx[:, 0],
-                         mid_idx[:, 2],
-                         mid_idx[:, 0],
-                         tris_subset[:, 1],
-                         mid_idx[:, 1],
-                         mid_idx[:, 2],
-                         mid_idx[:, 1],
-                         tris_subset[:, 2],
-                         mid_idx[:, 0],
-                         mid_idx[:, 1],
-                         mid_idx[:, 2]]).reshape((-1, 3))
-    # add the 3 new faces_subset per old face
-    new_faces = np.vstack((tris, f[len(face_index):]))
-    # replace the old face with a smaller face
-    new_faces[face_index] = f[:len(face_index)]
-
-    new_vertices = np.vstack((verts, mid))
-
-    if texcoords is not None:
-        texcoords_mid = texcoords[edges[unique]].mean(axis=1)
-        new_texcoords = np.vstack((texcoords, texcoords_mid))
-        return new_vertices, new_faces, new_texcoords
-
-    return new_vertices, new_faces
-
 
 def dpmap2verts(verts, tris, texcoords, dpmap, scale=0.914):
     dpmap = np.array(dpmap).astype(int)

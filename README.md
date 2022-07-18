@@ -16,6 +16,10 @@ Code for our ECCV 2022 paper "Structure-aware Editable Morphable Model for 3D Fa
 
 ## Getting started
 
+- Clone this repository and `cd facial-detail-manipulation`
+- Run `conda env create -f environment.yml`
+- 
+
 - Download pretrained model from [here](https://drive.google.com/file/d/16g8zcvQXts9SuU5tgstHpWMgQ49vBmeY/view?usp=sharing), unzip and put `SEMM` into `./checkpoints`.
 - Download `model_mse.pth` from [here](https://drive.google.com/file/d/1lc3GsP8XfIMDJfvamMmou2sOTG0ID02p/view?usp=sharing) and put it into `./checkpoints`.
 - Download `facescape_bilinear_model_v1_3.zip` from https://facescape.nju.edu.cn/Page_Download/  and put `core_847_50_52.npy` into `./predef`.
