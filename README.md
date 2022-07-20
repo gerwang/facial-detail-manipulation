@@ -2,6 +2,8 @@
 
 Code for our ECCV 2022 paper "Structure-aware Editable Morphable Model for 3D Facial Detail Animation and Manipulation".
 
+### [Paper](https://arxiv.org/abs/2207.09019)
+
 ##### Expression editing
 
 ![](./imgs/exp_inter.gif)
