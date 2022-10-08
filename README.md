@@ -2,7 +2,7 @@
 
 Code for our ECCV 2022 paper "Structure-aware Editable Morphable Model for 3D Facial Detail Animation and Manipulation".
 
-### [Paper](https://arxiv.org/abs/2207.09019) | [Video](https://www.youtube.com/watch?v=HgoN8wM56AM)
+### [Paper](https://arxiv.org/abs/2207.09019) | [Presentation Video](https://www.youtube.com/watch?v=tONe8QzR0u0) | [Supplementary Video](https://www.youtube.com/watch?v=HgoN8wM56AM) | [Poster](https://github.com/gerwang/facial-detail-manipulation/releases/download/v1.0/4426.pdf)
 
 ##### Expression editing
 
