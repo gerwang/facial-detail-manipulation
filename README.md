@@ -2,6 +2,8 @@
 
 Code for our ECCV 2022 paper "Structure-aware Editable Morphable Model for 3D Facial Detail Animation and Manipulation".
 
+### [Paper](https://arxiv.org/abs/2207.09019) | [Presentation Video](https://www.youtube.com/watch?v=tONe8QzR0u0) | [Supplementary Video](https://www.youtube.com/watch?v=HgoN8wM56AM) | [Poster](https://github.com/gerwang/facial-detail-manipulation/releases/download/v1.0/4426.pdf)
+
 ##### Expression editing
 
 ![](./imgs/exp_inter.gif)
@@ -81,14 +83,14 @@ python -m experiments both_cond demo SEMM --gpu_id 0
 An GUI window will pop up. You can import a displacement map and edit it by drawing or erasing lines.
 
 <details>
-    <summary>Common issues</summary>
-    <p>
-    If you encounter the problem `qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "${conda_path}/envs/semm/lib/python3.7/site-packages/cv2/qt/plugins" even though it was found`, that's a conflict between `opencv-python` and `pyqt5`. Consider using
+    <summary><b>Common issues</b></summary>
+If you encounter the problem "qt.qpa.plugin: Could not load the Qt platform plugin "xcb" in "${conda_path}/envs/semm/lib/python3.7/site-packages/cv2/qt/plugins" even though it was found", that's a conflict between opencv-python and pyqt5. Consider using
+    
 ```shell
-    conda install -c anaconda py-opencv
-    conda install -c alges pyqt 
+conda install -c anaconda py-opencv
+conda install -c alges pyqt 
 ```
-</p></details>
+</details>
 
 ## Training
 
