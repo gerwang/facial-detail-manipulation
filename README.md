@@ -90,6 +90,36 @@ An GUI window will pop up. You can import a displacement map and edit it by draw
 ```
 </p></details>
 
+## Training
+
+We provide a small sample dataset that comprises identities in FaceScape's [publishable_list_v1.txt](https://facescape.nju.edu.cn/static/publishable_list_v1.txt). You can commence training by utilizing the sample dataset through the following command:
+
+```shell
+python -m experiments both_cond train SEMM --gpu_id 01
+```
+The default configuration assumes running on two RTX 3090 GPUs.
+
+### Training data preprocessing
+
+Given that the sample dataset is insufficiently small to lead to favorable results, it is necessary to apply and download `Topologically Uniformed Model(TU-Model)` (`facescape_trainset_001_100.zip` ~ `facescape_trainset_801_847.zip`) in the FaceScape dataset. 
+
+Once downloaded, extract the dataset to `/path/to/FaceScape`. The folder should comprise of 847 folders, labeled from `1` to `847`.
+
+Next, use the following command to process the training dataset:
+
+```shell
+python -m detail_shape_process.train_detail_process --input /path/to/FaceScape --output /path/to/processed/dataset
+```
+
+Lastly, make sure to update the subsequent line:
+
+```python
+        opt.set(
+            dataroot="./predef/sample_dataset/",  # just a small sample dataset
+```
+
+in `experiments/both_cond_launcher.py` to point to the processed dataset.
+
 
 ## Acknowledgements
 
