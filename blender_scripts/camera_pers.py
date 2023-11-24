@@ -449,7 +449,7 @@ def load_mesh(obj_path):
     # print(bpy.data.meshes[obj_name].materials[0].node_tree.nodes[0].input.keys())
     bpy.data.meshes[obj_name].materials[0].node_tree.nodes[0].inputs[5].default_value = 0.2  # specular
     bpy.data.meshes[obj_name].materials[0].node_tree.nodes[0].inputs[7].default_value = 0.5  # roughness
-    bpy.data.meshes[obj_name].materials[0].node_tree.nodes[0].inputs[0].default_value = 0.5, 0.5, 0.8, 1  # roughness
+    bpy.data.meshes[obj_name].materials[0].node_tree.nodes[0].inputs[0].default_value = 0.5, 0.5, 0.8, 1  # albedo
 
     if args.smooth:
         mod = obj.modifiers.new('LaplacianSmooth', 'LAPLACIANSMOOTH')
